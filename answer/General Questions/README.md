@@ -63,12 +63,13 @@
 * Describe how you would create a simple slideshow page.
   * Ans: 2 ways, use javascript to change scrollLeft (scrollTop) or use CSS3 animation with predefined animation frames (Use radio button with CSS selector to control the CSS-only one)
   * TODO: Do simple example for both
+  * Simple slider with JavaScript: [Sample Page](http://benbai123.github.io/examples/Front-end-Developer-Interview-Questions/General%20Questions/slider_js.html) Sources: [HTML](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/General%20Questions/slider_js.html)[JS](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/General%20Questions/js/slider_js.js)[CSS](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/General%20Questions/css/slider_js.css)
 * If you could master one technology this year, what would it be?
   * Ans: Its almosst end of this year but...JDBC I guess.
 * Explain the importance of standards and standards bodies.
   * Ans:
     * importance of standards: Make all browser vendor and F2E face & follow same baseline, save our life.
-    * importance of standards bodies: So standards can comes out.
+    * importance of standards bodies: So standards can comes out. 
     (I do not want to talking about the benefit of "following standards" here, kinda out of scope)
 * What is Flash of Unstyled Content? How do you avoid FOUC?
   * Ans: Browser display unstyled content,
