@@ -32,8 +32,8 @@
   * Ans:
     * progressive enhancement: from static map image to google map
     * graceful degradation: from google map to static map image
-    * progressive enhancement: starts from partial then including all
-    * graceful degradation: including all at the begining then enhance partial of them
+    * progressive enhancement: including all at the begining then enhance partial of them
+    * graceful degradation: starts from partial then including all
     * for more information refer to [w3 wiki](https://www.w3.org/wiki/Graceful_degradation_versus_progressive_enhancement)
 * How would you optimize a website's assets/resources?
   * Ans: several points
