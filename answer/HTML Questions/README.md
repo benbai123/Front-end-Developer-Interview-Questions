@@ -1,8 +1,8 @@
 #### HTML Questions:
 
 * What does a `doctype` do?
-  * Ans: Short: Tell browser the HTML version of your page. Long: The <!DOCTYPE> declaration must be the very first thing in your HTML document, before the <html> tag. The <!DOCTYPE> declaration is not an HTML tag; it is an instruction to the web browser about what version of HTML the page is written in. In HTML 4.01, the <!DOCTYPE> declaration refers to a DTD, because HTML 4.01 was based on SGML. The DTD specifies the rules for the markup language, so that the browsers render the content correctly. HTML5 is not based on SGML, and therefore does not require a reference to a DTD.
-  Tip: Always add the <!DOCTYPE> declaration to your HTML documents, so that the browser knows what type of document to expect.
+  * Ans: Short: Tell browser the HTML version of your page. Long: The `<!DOCTYPE>` declaration must be the very first thing in your HTML document, before the `<html>` tag. The `<!DOCTYPE>` declaration is not an HTML tag; it is an instruction to the web browser about what version of HTML the page is written in. In HTML 4.01, the `<!DOCTYPE>` declaration refers to a DTD, because HTML 4.01 was based on SGML. The DTD specifies the rules for the markup language, so that the browsers render the content correctly. HTML5 is not based on SGML, and therefore does not require a reference to a DTD.
+  Tip: Always add the `<!DOCTYPE>` declaration to your HTML documents, so that the browser knows what type of document to expect.
   * Ref: [w3school](http://www.w3schools.com/tags/tag_doctype.asp)
   * !Ref: as usual, things usually more complex with some more detail (probably you never need them) [Activating Browser Modes with Doctype](https://hsivonen.fi/doctype/)
 * What's the difference between standards mode and quirks mode?
@@ -14,8 +14,8 @@
 * What's the difference between HTML and XHTML?
   * Ans: In XHTML
     * XHTML DOCTYPE is mandatory
-    * The xmlns attribute in <html> is mandatory
-    * <html>, <head>, <title>, and <body> are mandatory
+    * The xmlns attribute in `<html>` is mandatory
+    * `<html>, <head>, <title>, and <body>` are mandatory
     * XHTML elements must be properly nested
     * XHTML elements must always be closed
     * XHTML elements must be in lowercase
