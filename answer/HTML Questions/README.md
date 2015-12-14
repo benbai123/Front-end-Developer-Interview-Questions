@@ -47,6 +47,7 @@
     * Content written in one language may take up more or less space on the page than another language.
       * Make sure your layout has enough flexibility
       * Or adjust the content for different language properly.
+    * Ref: [7 Tips and Techniques For Multi-lingual Website Accessibility](http://www.nomensa.com/blog/2010/7-tips-and-techniques-for-multi-lingual-website-accessibility/)
 * What kind of things must you be wary of when design or developing for multilingual sites?
 * What are `data-` attributes good for?
 * Consider HTML5 as an open web platform. What are the building blocks of HTML5?
