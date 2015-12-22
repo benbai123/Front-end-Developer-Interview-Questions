@@ -49,10 +49,80 @@
       * Or adjust the content for different language properly.
     * Ref: [7 Tips and Techniques For Multi-lingual Website Accessibility](http://www.nomensa.com/blog/2010/7-tips-and-techniques-for-multi-lingual-website-accessibility/)
 * What kind of things must you be wary of when design or developing for multilingual sites?
+  * Ans: I am not familiar with Design but here is a good ref, just list something from it:
+    * Use a common default language (e.g., English, instead of Latin)
+    * Provide good UI for change language
+    * Apply different language based on IP (probably not a good idea, e.g., for traveler)
+    * You'll need a mechanism to load different image by lang if you translate and make different images (with text) for different languages.
+    * Again take care of text length.
+    * Also take care of colors, ref: [Colours in Culture](http://infobeautiful4.s3.amazonaws.com/2015/05/1276_colours_in_culture.png)
+    * Avoid hard-coded the contents that need to be translated.
+    * Date (and Number) formate probably different in different language.
+
+  * Ref: [
+What kind of things one should be wary of when designing or developing for multilingual sites?](https://www.quora.com/What-kind-of-things-one-should-be-wary-of-when-designing-or-developing-for-multilingual-sites)
 * What are `data-` attributes good for?
+  * Ans: It is good for put any custom data on dom element, let us store extra information on standard without any other tricks.
+    e.g.,
+    ```html
+      <button data-modal="#modal">show modal</button>
+    ```
+    Where data-modal denotes the selector used to select a div which is a modal box that will show up when button clicked.
 * Consider HTML5 as an open web platform. What are the building blocks of HTML5?
+  * Ans:
+    * more semantic text markup
+    * new form elements
+    * vedio and audio
+    * new javascript API
+    * canvas and SVG
+    * new communication API (WebSocket, SSE)
+    * geolocation API
+    * web worker API
+    * new data storage
+  * Ref: [HTML Questions:Front-end Developer Interview Questions](http://flowerszhong.github.io/2013/11/20/html-questions.html)
 * Describe the difference between a `cookie`, `sessionStorage` and `localStorage`.
+  * Ans:
+    * Cookies are primarily for reading server-side, local storage (including `localStorage` and `sessionStorage`) can only be read client-side
+    * Cookies will be sent in each HTTP header, the data in local storage will not.
+    * Cookies give you a limit of 4096 bytes, local storage is as big as 5MB per domain.
+    * Cookies must have expiration date, `localStorage` stores data with no expiration date, `sessionStorage` stores the data for only one session. The data stored in `sessionStorage` is deleted when the user closes the specific browser tab.
+  * Ref: [HTML5 Local Storage](http://www.w3schools.com/html/html5_webstorage.asp), [Local Storage vs Cookies](http://stackoverflow.com/questions/3220660/local-storage-vs-cookies).
 * Describe the difference between `<script>`, `<script async>` and `<script defer>`.
+  * Ans:
+    * The `<script>` tag is used to define a client-side script, such as a JavaScript. The `<script>` element either contains scripting statements, or it points to an external script file through the src attribute.
+    * `<script async>` (or `<script async="async">` for xhtml): It specifies that the script will be executed asynchronously as soon as it is available. The script is executed asynchronously with the rest of the page (the script will be executed while the page continues the parsing)
+    * `<script defer>` (or `<script defer="defer">` for xhtml): It specifies that the script is executed when the page has finished parsing. If async is not present and defer is present: The script is executed when the page has finished parsing
+    * Note async and defer are only for external scripts.
+  * Ref: [HTML <script> Tag](http://www.w3schools.com/tags/tag_script.asp), [HTML <script> async Attribute](http://www.w3schools.com/tags/att_script_async.asp), [HTML <script> defer Attribute](http://www.w3schools.com/tags/att_script_defer.asp).
 * Why is it generally a good idea to position CSS `<link>`s between `<head></head>` and JS `<script>`s just before `</body>`? Do you know any exceptions?
+  * Ans (short for both): In short, (generally) CSS `<link>` usually contains information that Browser need them to render most of HTML content and JS `<script>` doesn't.
+  * Ans (for link):
+    * From [HTML spec](http://www.w3.org/TR/html401/struct/links.html#edef-LINK), link may only appear in the head section in HTML 4.1, link can appear in the body section with the "itemprop" property in HTML5.
+    * Also, if you leave the the styles somewhere in the <body>, the browser has to re-render the page (new and old when loading) when the styles declared has been parsed.
+    * Put link in head help you to prevent FOUC.
+  * Ans (for script):
+    * script without `async` or `defer` will block parser to stop parsing the other HTML on your page, which may incur one or more network roundtrips and delay the time to first render of the page.
+  * Exception (for link):
+    * There is a case with respect to RWD, assume you have lots of media-query rules, browser will simply download all of them by default. If you really want to download only what you exactly need, you probably will want download CSS file with JS by some tricks. Two demo page below shows the two different cases.
+    * Samples:
+      * General media query: [Sample](http://benbai123.github.io/examples/Front-end-Developer-Interview-Questions/HTML%20Questions/CSS%20media%20query%20general/media_query_test.html), [Sources](https://github.com/benbai123/benbai123.github.io/tree/master/examples/Front-end-Developer-Interview-Questions/HTML%20Questions/CSS%20media%20query%20general)
+      * Tricky media query: [Sample](http://benbai123.github.io/examples/Front-end-Developer-Interview-Questions/HTML%20Questions/CSS%20media%20query%20tricky/media_query_test.html), [Sources](https://github.com/benbai123/benbai123.github.io/tree/master/examples/Front-end-Developer-Interview-Questions/HTML%20Questions/CSS%20media%20query%20tricky)
+        * Put the link to load in CSS content property. (see base.css)
+        * Load CSS file as needed by JS. (see html file)
+      * Note: Tricky way probably not a good way, don't focus on it.
+  * Exception (for script): There are more cases for script
+    * When the script is 3rd-party library with limitation so you cannot manage its position yourself (e.g., Modernizr.js), this is an exception.
+    * If most of your script is ok with `async` or `defer`, put them at the top will not block parser and can load them earlier.
+    * If the script is the major content provider (e.g., the content is map rendered by Google Map API which support async load).
+    * If the style will be changed and causes lots of repaint during the script execution (just like Modernizr)
+    * You need the script to render your content, e.g., your content is a set of number and you need to render them with some JS Charts library.
+    * In short, when you cannot control it, when defer/async allowed or when the script is important for render content.
+  * Ref:
+    * For CSS: [What's the difference if I put css file inside <head> or <body>?](http://stackoverflow.com/questions/1642212/whats-the-difference-if-i-put-css-file-inside-head-or-body), [load external css file in body tag [duplicate]](http://stackoverflow.com/questions/4957446/load-external-css-file-in-body-tag)
+    * For JS: [Where is the best place to put <script> tags in HTML markup?](http://stackoverflow.com/questions/436411/where-is-the-best-place-to-put-script-tags-in-html-markup), [Remove Render-Blocking JavaScript](https://developers.google.com/speed/docs/insights/BlockingJS).
 * What is progressive rendering?
+  * Ans: The main idea is render a visible content as soon as possible, but the initial content probably has lower quality or is not complete, then load more data to improve its quality or make it complete. e.g., Progressive image rendering.
+  * Ref: [What is progressive rendering?](https://coronarenderer.freshdesk.com/support/solutions/articles/5000516260-what-is-progressive-rendering-), [The Lost Art of Progressive HTML Rendering](http://blog.codinghorror.com/the-lost-art-of-progressive-html-rendering/)
 * Have you used different HTML templating languages before?
+  * Ans: I've used JSP, JSF, ZK, Struts, node with express, Rails to write either pure HTML page or mixin with backend template Engine, also tried the template (either hard coded string or load external html file) of AngularJS.
+  * Actually I am not sure what does HTML templating languages mean, if it means something like backbone or embr then the answer is "Just tried AngularJS".
