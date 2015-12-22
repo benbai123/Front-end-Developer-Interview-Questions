@@ -93,7 +93,7 @@ What kind of things one should be wary of when designing or developing for multi
     * `<script async>` (or `<script async="async">` for xhtml): It specifies that the script will be executed asynchronously as soon as it is available. The script is executed asynchronously with the rest of the page (the script will be executed while the page continues the parsing)
     * `<script defer>` (or `<script defer="defer">` for xhtml): It specifies that the script is executed when the page has finished parsing. If async is not present and defer is present: The script is executed when the page has finished parsing
     * Note async and defer are only for external scripts.
-  * Ref: [HTML <script> Tag](http://www.w3schools.com/tags/tag_script.asp), [HTML <script> async Attribute](http://www.w3schools.com/tags/att_script_async.asp), [HTML <script> defer Attribute](http://www.w3schools.com/tags/att_script_defer.asp).
+  * Ref: [HTML script Tag](http://www.w3schools.com/tags/tag_script.asp), [HTML script async Attribute](http://www.w3schools.com/tags/att_script_async.asp), [HTML script defer Attribute](http://www.w3schools.com/tags/att_script_defer.asp).
 * Why is it generally a good idea to position CSS `<link>`s between `<head></head>` and JS `<script>`s just before `</body>`? Do you know any exceptions?
   * Ans (short for both): In short, (generally) CSS `<link>` usually contains information that Browser need them to render most of HTML content and JS `<script>` doesn't.
   * Ans (for link):
