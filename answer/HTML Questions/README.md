@@ -118,7 +118,7 @@ What kind of things one should be wary of when designing or developing for multi
     * You need the script to render your content, e.g., your content is a set of number and you need to render them with some JS Charts library.
     * In short, when you cannot control it, when defer/async allowed or when the script is important for render content.
   * Ref:
-    * For CSS: [What's the difference if I put css file inside <head> or <body>?](http://stackoverflow.com/questions/1642212/whats-the-difference-if-i-put-css-file-inside-head-or-body), [load external css file in body tag [duplicate]](http://stackoverflow.com/questions/4957446/load-external-css-file-in-body-tag)
+    * For CSS: [What's the difference if I put css file inside head or body?](http://stackoverflow.com/questions/1642212/whats-the-difference-if-i-put-css-file-inside-head-or-body), [load external css file in body tag [duplicate]](http://stackoverflow.com/questions/4957446/load-external-css-file-in-body-tag)
     * For JS: [Where is the best place to put <script> tags in HTML markup?](http://stackoverflow.com/questions/436411/where-is-the-best-place-to-put-script-tags-in-html-markup), [Remove Render-Blocking JavaScript](https://developers.google.com/speed/docs/insights/BlockingJS).
 * What is progressive rendering?
   * Ans: The main idea is render a visible content as soon as possible, but the initial content probably has lower quality or is not complete, then load more data to improve its quality or make it complete. e.g., Progressive image rendering.
