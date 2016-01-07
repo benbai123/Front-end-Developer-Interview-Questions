@@ -264,8 +264,47 @@
       * Note: A "positioned" element is one whose position is anything except static.
   * Ref: [CSS Layout - The position Property](http://www.w3schools.com/css/css_positioning.asp)
 * The 'C' in CSS stands for Cascading.  How is priority determined in assigning styles (a few examples)?  How can you use this system to your advantage?
+  * Ans:
+    * How is priority determined in assigning styles
+      * The ID selector is stronger than Class.
+      * Class selector is stronger than Tag.
+      * The rule "further down in the CSS" has higher priority
+      * The selector which is "closer to the actual text" has higher priority
+      * More specific (by specifing parent selector or chaining multiple selectors) is stronger.
+      * Inline style is strongest (except `!important`)
+      * `!important` raises priority as a charm.
+      * There are also some default styles, e.g. `display: block;` for `div`.
+      * Some examples: [Sample](http://benbai123.github.io/examples/Front-end-Developer-Interview-Questions/CSS%20Questions/css_priority.html), [HTML](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/CSS%20Questions/css_priority.html), [CSS](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/CSS%20Questions/css/css_priority.css)
+    * How can you use this system to your advantage?
+      * Do reset/normalize with the weaker selector (tags) at the top, this makes them easier to be overridden.
+      * Create util class (e.g. `.clear {clear: both !important;}`) stronger at the bottom so it will always works as expected.
+      * Declare multiple-status part normally - not too strong/weak (e.g., normal/hover/pressed/focused of a button) so can switch between them easily.
+      * Well, I cannot answer this part well.
+  * Ref: [Specifics on CSS Specificity](https://css-tricks.com/specifics-on-css-specificity/)
 * What existing CSS frameworks have you used locally, or in production? How would you change/improve them?
+  * Ans:
+    * I just tried Bootstrap
+    * There are something I want to change
+      * The menu works with mouse click be default, I would change it to work with mouseover.
+      * The cols is floated, this will cause some weird layout if different column has different height. I decided to change them to `display: inline-block` so I can use them easier (I guess).
+    * I have read [5 reasons NOT to use Twitter Bootstrap](http://www.zingdesign.com/5-reasons-not-to-use-twitter-bootstrap/) so probably will try some other Framework (e.g., [Foundation](http://foundation.zurb.com/) )
 * Have you played around with the new CSS Flexbox or Grid specs?
+  * Ans: Yes. I have tried to make [a component](https://github.com/benbai123/flexlayout) for [ZK](https://www.zkoss.org/) Framework with Flexbox, but it is outdated, I made it at 2012 and the Flexbox spec has changed after that.
 * How is responsive design different from adaptive design?
+  * Ans: responsive design using a set of styles (probably with some media query) to fit multiple screen size, adaptive design make several sets of styles and apply it to different screen size based on breakpoint.
+  * Ref: [Adaptive web design (wiki)](https://en.wikipedia.org/wiki/Adaptive_web_design), [What is the difference between responsive vs. adaptive web design?](http://www.techrepublic.com/blog/web-designer/what-is-the-difference-between-responsive-vs-adaptive-web-design/), [Responsive vs. Adaptive Design: What’s the Best Choice for Designers?](https://studio.uxpin.com/blog/responsive-vs-adaptive-design-whats-best-choice-designers/)
 * Have you ever worked with retina graphics? If so, when and what techniques did you use?
+  * Ans:
+    * No I haven't, but I know its related to high resolution.
+    * I'll try 2 ways, use images with higher dimantion for retina, or use SVG to scale images.
+  * Ref: [I cheated before answer this (and lots of others, actually) question :p](http://www.pro-tekconsulting.com/blog/have-you-ever-worked-with-retina-graphics-if-so-when-and-what-techniques-did-you-use/)
 * Is there any reason you'd want to use `translate()` instead of *absolute positioning*, or vice-versa? And why?
+  * Ans:
+    * Is there any reason you'd want to use `translate()` instead of *absolute positioning*
+      * translateX/Y have better performance
+      * The property works well with the element itself, do not need another parent with `position: relative`
+    * vice-versa
+      * translateX/Y affected by padding, so prbably need some calculation (by yourself) to get real position.
+      * *absolute positioning* support older browser
+    * Simple sample: [Demo](http://benbai123.github.io/examples/Front-end-Developer-Interview-Questions/CSS%20Questions/absolute_and_translate.html), [HTML](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/CSS%20Questions/absolute_and_translate.html), [CSS](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/CSS%20Questions/css/absolute_and_translate.css)
+  * Ref: [Why Moving Elements With Translate() Is Better Than Pos:abs Top/left](http://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/), [CSS transform vs position](http://stackoverflow.com/questions/7108941/css-transform-vs-position)
