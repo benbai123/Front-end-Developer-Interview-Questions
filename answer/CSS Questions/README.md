@@ -241,7 +241,7 @@
     * It allows you specify border/padding freely without affect actual visible width, this is useful for RWD (Responsive Web Design).
     * Just need to take care of browser compatibility btw.
 * List as many values for the display property that you can remember.
-  * Ans: (Not cheeting) `none`, `inline`, `inline-block`, `block`, `table`, `table-cell`, `table-caption`, `flex`
+  * Ans: (Not cheating) `none`, `inline`, `inline-block`, `block`, `table`, `table-cell`, `table-caption`, `flex`
 * What's the difference between inline and inline-block?
   * Ans:
     * `inline`: Both the inside of this block and the element itself are formatted as an inline-level box.
@@ -297,7 +297,7 @@
   * Ans:
     * No I haven't, but I know its related to high resolution.
     * I'll try 2 ways, use images with higher dimantion for retina, or use SVG to scale images.
-  * Ref: [I cheated before answer this (and lots of others, actually) question :p](http://www.pro-tekconsulting.com/blog/have-you-ever-worked-with-retina-graphics-if-so-when-and-what-techniques-did-you-use/)
+  * Ref: [I cheat before answer this (and lots of others, actually) question :p](http://www.pro-tekconsulting.com/blog/have-you-ever-worked-with-retina-graphics-if-so-when-and-what-techniques-did-you-use/)
 * Is there any reason you'd want to use `translate()` instead of *absolute positioning*, or vice-versa? And why?
   * Ans:
     * Is there any reason you'd want to use `translate()` instead of *absolute positioning*
