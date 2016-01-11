@@ -10,7 +10,7 @@
   * Ans:
     * UI, make Dom structure as simple as possible, but still clear architecture. Also take care of reusability, including Coponent level and Dom element level. Be careful of memory leak.
     * Security, XSS - Encoding text as needed. CSRF - Make a private contract (e.g., extra token) with back-end. Also use SSL connection if needed.
-    * Performance, Reduce Dom amout end JS code to run, implement Load on Demand and/or Render on Demand component, use throttle/debounce as needed, always declare variable at proper scope.
+    * Performance, Reduce Dom amout and JS code to run, implement Load on Demand and/or Render on Demand component, use throttle/debounce as needed, always declare variable at proper scope.
     * SEO, use html tag (title, meta-description, a)properly, do server-side rendering if needed.
     * Maintainability, Component, Naming, CSS Pre-processing, JS Modulize, File Structure, Split HTML to Fragments, Template, Use Framework (Angular, Backbone, etc), etc
 * Talk about your preferred development environment.

@@ -28,6 +28,7 @@
       Array.prototype.filter( callbackfn [ , thisArg ] )
       ```
       * When a function is called in a constructor context, the value of this is the new object that the interpreter created
+  * Sample: [Demo](http://benbai123.github.io/examples/Front-end-Developer-Interview-Questions/JS%20Questions/the_this_keyword.html), [HTML](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/JS%20Questions/the_this_keyword.html), [JS](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/JS%20Questions/js/the_this_keyword.js)
   * Ref: [How does the “this” keyword work?](http://stackoverflow.com/questions/3127429/how-does-the-this-keyword-work), [Scope in JavaScript](http://web.archive.org/web/20110725013125/http://www.digital-web.com/articles/scope_in_javascript/)
 * Explain how prototypal inheritance works
   * Ans:
@@ -77,12 +78,51 @@
         // code to run
       })();
       ```
+  * Sample: [Demo](http://benbai123.github.io/examples/Front-end-Developer-Interview-Questions/JS%20Questions/IIFE_test.html), [HTML](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/JS%20Questions/IIFE_test.html), [JS](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/JS%20Questions/js/IIFE_test.js)
   * Ref: [Immediately-Invoked Function Expression (IIFE)](http://benalman.com/news/2010/11/immediately-invoked-function-expression/), [JavaScript function declaration and evaluation order](http://stackoverflow.com/questions/3887408/javascript-function-declaration-and-evaluation-order)
 * What's the difference between a variable that is: `null`, `undefined` or undeclared?
+  * Ans: 
+    * `undeclared` variables don’t even exist
+    * `undefined` variables exist, but don’t have anything assigned to them
+    * `null` variables exist and have null assigned to them
   * How would you go about checking for any of these states?
+    * Ans: As the code below, it can detect the status of a specific variable
+    ```javascript
+    function testStatus () {
+        try { // here it is undeclared so will throw an exception
+            if (val) {};
+        } catch (e) { // just return the exception or some msg
+            return e;
+        }
+        if ((typeof val) === 'undefined') // here it is undefined
+            return 'val is undefined';
+        if (val == null) // it is null
+            return 'val is null';
+    }
+    ```
+  * Sample: [Demo](http://benbai123.github.io/examples/Front-end-Developer-Interview-Questions/JS%20Questions/null_undefine_undeclare.html), [HTML](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/JS%20Questions/null_undefine_undeclare.html), [JS](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/JS%20Questions/js/null_undefine_undeclare.js)
+  * Ref: [JS: null, undefined, and undeclared](http://lucybain.com/blog/2014/null-undefined-undeclared/), [What is the difference in Javascript between 'undefined' and 'not defined'?](http://stackoverflow.com/questions/833661/what-is-the-difference-in-javascript-between-undefined-and-not-defined)
 * What is a closure, and how/why would you use one?
+  * Ans:
+    * Closures are functions that refer to independent (free) variables. In other words, the function defined in the closure 'remembers' the environment in which it was created.
+    * How/Why use it: For me the reason is I want something private, make global scope clean, and prevent any unexpected interaction/side-effect. e.g., assume making a game with JavaScript and you want keep the whole environment of the game private and safe.
+  * Sample: [Demo](http://benbai123.github.io/examples/Front-end-Developer-Interview-Questions/JS%20Questions/closure.html), [HTML](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/JS%20Questions/closure.html), [JS](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/JS%20Questions/js/closure.js)
+  * Ref: [Closures - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 * What's a typical use case for anonymous functions?
+  * Ans: The inline function, e.g., jQuery Event Handler
+  ```javascript
+  $('.selector').on('click', function (e) {
+    // this is anonymous functions
+  });
+  ```
+  or IIFE
+  ```javascript
+  (function () {
+    //  IIFE with anonymous functions
+  })();
+  ```
 * How do you organize your code? (module pattern, classical inheritance?)
+  * Ans: I use object literal to modulize/componentlize my code and handle prototype chain to simulate classical inheritance if needed.
 * What's the difference between host objects and native objects?
 * Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`?
 * What's the difference between `.call` and `.apply`?
