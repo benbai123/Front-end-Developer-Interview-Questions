@@ -122,9 +122,25 @@
   })();
   ```
 * How do you organize your code? (module pattern, classical inheritance?)
-  * Ans: I use object literal to modulize/componentlize my code and handle prototype chain to simulate classical inheritance if needed.
+  * Ans:
+    * I use object literal to modulize/componentlize my code and handle prototype chain to simulate classical inheritance if needed.
+    * I will write some APIs to wrap the common process of define/extend a `class` create instance and call super method, after that I can work with almost pure object literal.
+  * Sample: [Demo](http://benbai123.github.io/examples/Front-end-Developer-Interview-Questions/JS%20Questions/code_organization.html), [HTML](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/JS%20Questions/code_organization.html), [JS](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/JS%20Questions/js/code_organization.js)
+  * Note:
+    * The sample above just simple demo case, in real use you may separate js code to several different files and wrap them in different IIFE so they will have different scope.
+    * This probably a little old fashion, today probably use some libraries (e.g., AMD/CommonJS) to help you organize your code.
+  * Ref: The way I organize my code is learned from [ZK](https://www.zkoss.org/), See [zk.js](https://github.com/zkoss/zk/blob/v7.0.3/zk/src/archive/web/js/zk/zk.js#L211)
 * What's the difference between host objects and native objects?
+  * Ans:
+    * host objects: object supplied by the host environment to complete the execution environment of ECMAScript. e.g., (assuming browser environment): `window`, `document`, `location`, `history`, `XMLHttpRequest`, `setTimeout`, ...
+    * native objects: object in an ECMAScript implementation whose semantics are fully defined by this specification rather than by the host environment. e.g., `Object` (constructor), `Date`, `Math`, `parseInt`, `eval`, string methods like `indexOf` and `replace`, ...
+  * Ref: [What is the difference between native objects and host objects?](http://stackoverflow.com/questions/7614317/what-is-the-difference-between-native-objects-and-host-objects)
 * Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`?
+  * Ans:
+    * `function Person(){}` declare a function named Person.
+    * `var person = Person()` declare a variable named person, call Person function, and assign the value returned by Person function to variable person.
+    * `var person = new Person()` declare a variable named person, create an object with the constructor function Person, and assign the created object to person variable.
+    * (Doubt) is this the answer? Not sure what the question asking.
 * What's the difference between `.call` and `.apply`?
 * Explain `Function.prototype.bind`.
 * When would you use `document.write()`?

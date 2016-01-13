@@ -1,9 +1,20 @@
 #### HTML Questions:
 
 * What does a `doctype` do?
-  * Ans: Short: Tell browser the HTML version of your page. Long: The `<!DOCTYPE>` declaration must be the very first thing in your HTML document, before the `<html>` tag. The `<!DOCTYPE>` declaration is not an HTML tag; it is an instruction to the web browser about what version of HTML the page is written in. In HTML 4.01, the `<!DOCTYPE>` declaration refers to a DTD, because HTML 4.01 was based on SGML. The DTD specifies the rules for the markup language, so that the browsers render the content correctly. HTML5 is not based on SGML, and therefore does not require a reference to a DTD.
-  Tip: Always add the `<!DOCTYPE>` declaration to your HTML documents, so that the browser knows what type of document to expect.
-  * Ref: [w3school](http://www.w3schools.com/tags/tag_doctype.asp)
+  * Ans:
+    * Short: Tell browser the HTML version of your page.
+    * Long: The `<!DOCTYPE>` declaration must be the very first thing in your HTML document, before the `<html>` tag. The `<!DOCTYPE>` declaration is not an HTML tag; it is an instruction to the web browser about what version of HTML the page is written in. In HTML 4.01, the `<!DOCTYPE>` declaration refers to a DTD, because HTML 4.01 was based on SGML. The DTD specifies the rules for the markup language, so that the browsers render the content correctly. HTML5 is not based on SGML, and therefore does not require a reference to a DTD.
+      * Tip: Always add the `<!DOCTYPE>` declaration to your HTML documents, so that the browser knows what type of document to expect.
+      * some examples
+      ```html
+      <!-- doctype for HTML 5 -->
+      <!DOCTYPE html>
+      ```
+      ```html
+      <!-- doctype for HTML 4.01 strict -->
+      <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+      ```
+  * Ref: [w3school](http://www.w3schools.com/tags/tag_doctype.asp), [SGML - wiki](https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language)
   * !Ref: as usual, things usually more complex with some more detail (probably you never need them) [Activating Browser Modes with Doctype](https://hsivonen.fi/doctype/)
 * What's the difference between standards mode and quirks mode?
   * Ans:
@@ -59,8 +70,7 @@
     * Avoid hard-coded the contents that need to be translated.
     * Date (and Number) formate probably different in different language.
 
-  * Ref: [
-What kind of things one should be wary of when designing or developing for multilingual sites?](https://www.quora.com/What-kind-of-things-one-should-be-wary-of-when-designing-or-developing-for-multilingual-sites)
+  * Ref: [What kind of things one should be wary of when designing or developing for multilingual sites?](https://www.quora.com/What-kind-of-things-one-should-be-wary-of-when-designing-or-developing-for-multilingual-sites)
 * What are `data-` attributes good for?
   * Ans: It is good for put any custom data on dom element, let us store extra information on standard without any other tricks.
     e.g.,
@@ -98,7 +108,7 @@ What kind of things one should be wary of when designing or developing for multi
   * Ans (short for both): In short, (generally) CSS `<link>` usually contains information that Browser need them to render most of HTML content and JS `<script>` doesn't.
   * Ans (for link):
     * From [HTML spec](http://www.w3.org/TR/html401/struct/links.html#edef-LINK), link may only appear in the head section in HTML 4.1, link can appear in the body section with the "itemprop" property in HTML5.
-    * Also, if you leave the the styles somewhere in the <body>, the browser has to re-render the page (new and old when loading) when the styles declared has been parsed.
+    * Also, if you leave the styles somewhere in the <body>, the browser has to re-render the page (new and old when loading) when the styles declared has been parsed.
     * Put link in head help you to prevent FOUC.
   * Ans (for script):
     * script without `async` or `defer` will block parser to stop parsing the other HTML on your page, which may incur one or more network roundtrips and delay the time to first render of the page.
