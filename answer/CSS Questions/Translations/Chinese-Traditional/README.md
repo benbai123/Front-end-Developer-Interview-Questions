@@ -322,6 +322,6 @@
     * 何時你會想用 *absolute positioning*
       * translate()` (X/Y) 會受 padding 影響, 因此若實際上要的是對上一層元素左上角的位移需要做額外計算, 懶得算就用 absolute position 吧
       * 當需要支援較舊瀏覽器時使用 *absolute positioning*
-      * 時用 *absolute positioning* 時 `z-index` 才會有作用, 也才不會留一塊空白在那 (不過可以用 `translate()` (X/Y) 並指定 `position: absolute;`, 要仔細測一下就是)
+      * 用 *absolute positioning* 時 `z-index` 才會有作用, 也才不會留一塊空白在那 (不過可以用 `translate()` (X/Y) 並指定 `position: absolute;`, 要仔細測一下就是)
     * 一些範例: [Demo](http://benbai123.github.io/examples/Front-end-Developer-Interview-Questions/CSS%20Questions/absolute_and_translate.html), [HTML](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/CSS%20Questions/absolute_and_translate.html), [CSS](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/CSS%20Questions/css/absolute_and_translate.css)
   * Ref: [Why Moving Elements With Translate() Is Better Than Pos:abs Top/left](http://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/), [CSS transform vs position](http://stackoverflow.com/questions/7108941/css-transform-vs-position)
