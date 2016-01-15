@@ -74,7 +74,7 @@
       * Currently I use ZK which has it's own system to manage Component and resources.
       * Regarding the parent question, the process I use is progressive enhancement, the techniques I use depending on the target issue (talk more example to describe if needed).
 * What are the different ways to visually hide content (and make it available only for screen readers)?
-  * Ans: Control positio of text by `text-indent: -10000px;` or `position: fixed; left: -10000px;`, or probably use opacity/control its color to make it invisible, need to test which property will also skipped by screen readers actually.
+  * Ans: Control position of text by `text-indent: -10000px;` or `position: fixed; left: -10000px;`, or probably use opacity/control its color to make it invisible, need to test which property will also skipped by screen readers actually.
 * Have you ever used a grid system, and if so, what do you prefer?
   * Ans: I tried two, ZK's grid component and bootstrap's grid system (I am not sure whether flex box model and table are grid systems, looks similarly). I prefer bootstrap since its pretty straight forward, just need to know little class names/rules and easy to control. It mix style into HTML a bit but its acceptable for me.
   * Update: One day later I found Grid System also related to Graphic Design, bootstrap even better when consider this, it makes a bridge between Designer and Developer.
@@ -181,7 +181,7 @@
       display: inline-block;
       /* IE hack */
       *display: inline;
-      zoom: `;
+      zoom: 1;
     }
     ```
     * Ref: [CSS performance revisited: selectors, bloat and expensive styles](http://benfrain.com/css-performance-revisited-selectors-bloat-expensive-styles/), [Profiling CSS for fun and profit](http://perfectionkills.com/profiling-css-for-fun-and-profit-optimization-notes/), [Minimizing browser reflow](https://developers.google.com/speed/articles/reflow?hl=en), [How to animate "box-shadow" with silky smooth performance](http://tobiasahlin.com/blog/how-to-animate-box-shadow/)
