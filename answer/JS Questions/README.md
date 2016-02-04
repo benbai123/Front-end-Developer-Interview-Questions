@@ -154,7 +154,7 @@
 * When would you use `document.write()`?
   * Ans: I didn't use it before, but I learned some legitimate use of it when answer this question
     * for polyfill or fallback e.g.,
-    ```javascript
+    ```html
     <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.3.min.js"><\/script>')</script>
