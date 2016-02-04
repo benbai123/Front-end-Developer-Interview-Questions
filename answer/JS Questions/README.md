@@ -283,15 +283,19 @@
 ```javascript
 duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 ```
+
   * Ans:
   ```javascript
+  
   function duplicate (a) {
     return a.slice().concat(a);
   }
   duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
   ```
+
   * Ref:
     * [Javascript fastest way to duplicate an Array - slice vs for loop](http://stackoverflow.com/questions/3978492/javascript-fastest-way-to-duplicate-an-array-slice-vs-for-loop)
+
 * Why is it called a Ternary expression, what does the word "Ternary" indicate?
   * Ans:
     * Because it takes three elements, `a? b : c`, where a is the condition, b/c are the returned value when a is true/false
