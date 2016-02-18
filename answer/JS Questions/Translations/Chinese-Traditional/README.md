@@ -62,7 +62,7 @@
   ```
   因為 JS 執行分兩個階段, 編譯與執行, function declaration (定義方法) 會在編譯階段處理, 然後執行階段就只有 `();` 能執行, 然後造成 SyntaxError
   * 需要修改那裡使它成為IIFE?
-    * 答: 要做的是將 function declaration (定義方法) 改成 function expression (函數表達), 例如將 `function foo` 改成 `var foo = function` 或以小括號把 `function foo () {}` 括起來 (因為小括號內只能有表達式, 這樣做會讓 `function foo () {}` 被當成一個參數), 如下
+    * 答: 要做的是將 function declaration (定義方法) 改成 function expression (函式表達), 例如將 `function foo` 改成 `var foo = function` 或以小括號把 `function foo () {}` 括起來 (因為小括號內只能有表達式, 這樣做會讓 `function foo () {}` 被當成一個參數), 如下
       * 改為 function expression
       ```javascript
       var foo = function(){
@@ -75,7 +75,7 @@
         // code to run
       })();
       ```
-      * you can even remove its name
+      * 還可以改成暱名函式
       ```javascript
       (function () {
         // code to run
@@ -147,7 +147,7 @@
 * `.call` 和 `.apply`有何不同？
   * 答 (老實版): 嗯...不是很清楚耶科科, 反正我都用 apply 沒在用 call
   * 答 (作弊版):
-    * `.apply` 讓以將參數們透過 array 傳遞; `.call` 則需要確實的一個一個塞參數
+    * `.apply` 可以將參數們透過 array 傳遞 (使用內建 arguments 參數你甚至不用知道有什麼參數傳入); `.call` 則需要確實的一個一個塞參數
     * (當明確知道參數能一個一個塞時) `.call` 的效能比較好, [call vs apply - jsperf](http://jsperf.com/test-call-vs-apply/3)
   * 參考: [What is the difference between call and apply?](http://stackoverflow.com/questions/1986896/what-is-the-difference-between-call-and-apply)
 * 描述 `Function.prototype.bind`?
@@ -228,8 +228,8 @@
     * 答: 有, Angularjs
 * 描述 "hoisting"
   * 答:
-    * 在 JavaScript 中, 函數及變數定義是被 "提前" 的, 它們相當於會被提前到所屬 scope 的頂端
-    * 因此你可以在函數或變數定義之前先使用它 (只是寫起來像那樣)
+    * 在 JavaScript 中, 函式及變數定義是被 "提前" 的, 它們相當於會被提前到所屬 scope 的頂端
+    * 因此你可以在函式或變數定義之前先使用它 (只是寫起來像那樣)
   * 例:
     * 變數
     ```javascript
@@ -241,7 +241,7 @@
     var foo;
     foo = 2;
     ```
-    * 函數
+    * 函式
     ```javascript
     // 先呼叫
     hoisted(); // logs "foo"
