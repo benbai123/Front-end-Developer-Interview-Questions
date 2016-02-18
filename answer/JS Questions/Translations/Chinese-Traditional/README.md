@@ -252,19 +252,396 @@
     }
     ```
   * 參考: [Hoisting - MDN](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
-  * 另外也看看這成因: [JavaScript function declaration and evaluation order](http://stackoverflow.com/questions/3887408/javascript-function-declaration-and-evaluation-order)
+  * 另外也看看這個, 應該是成因: [JavaScript function declaration and evaluation order](http://stackoverflow.com/questions/3887408/javascript-function-declaration-and-evaluation-order)
 * 描述 event bubbling.
+  * 答: 它是一種 HTML DOM 傳播 event 的方式, 也就是當你觸發一個 event 時 (假設是 click), 第一個接收到該 event 的是最內層的元素 (假設是某個 li), 然後才一路往外層元素傳遞 (ul, 然後或許更外層的 div, 一直到 body document)
+  * 參考: [JavaScript HTML DOM EventListener](http://www.w3schools.com/js/js_htmldom_eventlistener.asp)
 * "attribute" 和 "property" 的不同？
+  * 答: 
+    * attribute 就是 HTML code 中那些 tag 的屬性, 如 `<input type="text" value="val" />` 這裡的 type 跟 value 就是 attribute, property 則是瀏覽器 parse 了該 HTML code 建立一個 DOM node 後, 這個 node 是一個 object, 然後它會有 type 及 value 這些屬性
+    * 某些 attribute 會直接對應到 property, 如 ID
+    * 某些則否, 如 value attribute 指的是初始值, 但 value property 則是目前值
+  * 參考: [HTML - attributes vs properties [duplicate]](http://stackoverflow.com/questions/19246714/html-attributes-vs-properties), [Properties and Attributes in HTML](http://stackoverflow.com/questions/6003819/properties-and-attributes-in-html)
 * 為什麼擴展 JavaScript 內建的 objects 不是個好方法？
+  * 答:
+    * 因為很可能之後產生衝突或預期外的結果
+    * 例如:
+      * 假設你加了一個 Array.duplicate 方法, 之後原生的 JS 也加了該方法, 但意義不同, 那別人使用該方法 (他認為在用原生的) 時就會無法達到他想要的結果
+      * 假設你加了一個方法, 某個你使用的 lib 後來也加了同樣的方法, 則可能會讓你的應用產生錯誤.
+  * 答: [Why is extending native objects a bad practice?](http://stackoverflow.com/questions/14034180/why-is-extending-native-objects-a-bad-practice)
 * document load event 和 document ready event 有什麼不同？
+  * 答:
+    * `$(document).ready()`: HTML Document 載入完成, DOM 準備好了, 大部份的情形下可以在這時候執行 Script
+    * `window.onload = funcRef;`: assets 都載入了, 假設一段 Script 需要取得圖片寬高等載入完成才會知道的資訊就寫在這裡
+  * 參考:
+    * [jQuery - What are differences between $(document).ready and $(window).load?](http://stackoverflow.com/questions/8396407/jquery-what-are-differences-between-document-ready-and-window-load)
+    * [.ready() | jQuery API Documentation](https://api.jquery.com/ready/)
+    * [onload Event | w3school](http://www.w3schools.com/jsref/event_onload.asp)
+    * [GlobalEventHandlers.onload](https://developer.mozilla.org/en/docs/Web/API/GlobalEventHandlers/onload)
 * `==` 和 `===` 有什麼不同？
+  * Ans: 
+    * `==`: 假如兩個值是 相同的 String, 相同的數字, 相同的布林值或相同的物件即視為相等, 若它們是不同的類型但可透過自動轉型為前述狀況也行
+    * `===`: 類似於 `==`, 不同點在不會做自動轉型, 也就是連型態都要一致才會被視為相等.
+    * some examples: 
+      ```javascript
+      1 == '1'; // true
+      1 == true; // true
+      1 === '1'; // false
+      1 === true; // false
+      new Date() == new Date().toString(); // true
+      new Date() === new Date().toString(); // false
+      ```
+  * 參考:
+    * [Does it matter which equals operator (== vs ===) I use in JavaScript comparisons?](http://stackoverflow.com/questions/359494/does-it-matter-which-equals-operator-vs-i-use-in-javascript-comparisons)
+    * [JavaScript tutorial: Comparison operators](http://www.c-point.com/javascript_tutorial/jsgrpComparison.htm)
 * 描述 JavaScript 的 same-origin policy (同源策略)
+  * 答:
+    * same-origin policy 限制一個 origin 的 document/script 能如何與其它 Origin 的資源進行互動, 它是防止惡意文件的關鍵安全機制
+    * 兩個頁面若 protocol (http/https), port 及 host 都相同則被視為同一個 origin
+  * 參考: [Same-origin policy - Web security | MDN](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)
 * 實作如下程式:
 
 ```javascript
 duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 ```
 
+  * 答:
+  ```javascript
+  
+  function duplicate (a) {
+    return a.concat(a);
+  }
+  duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
+  ```
+
+  * 參考:
+    * [Javascript fastest way to duplicate an Array - slice vs for loop](http://stackoverflow.com/questions/3978492/javascript-fastest-way-to-duplicate-an-array-slice-vs-for-loop)
+
 * Ternary expression 怎麼來的, "Ternary" 的意思是什麼？
+  * 答:
+    * 它使用三個元素, `a? b : c;`, 其中 a 是條年, b/c 是當 a 為 true/false 時的回傳值
+    * Ternary 意指它使用的元素數目 (3)
+  * 參考:
+    * [Ternary operation](https://en.wikipedia.org/wiki/Ternary_operation)
+    * [Arity](https://en.wikipedia.org/wiki/Arity)
 * 什麼是 `"use strict";`? 使用他的優點和缺點是什麼？
+  * 答:
+    * 它會使用 strict mode 來執行你的 code, 這會改變 JavaScript 執行起來的行為, 大部份的改變是會讓不好的寫法 (如使用未宣告的變數) 報錯 (在非 strict mode 時則是自動變成全域變數),
+    * 優點很明顯的是可以協助 (逼迫? XD) 你避免使用某些明顯有問題的寫法
+    * 缺點則是某些在非 strict mode 下開發的東西在 strict mode 下會無法運作, 而某些在 strict mode 下開發的東西在非 strict mode 下無法運作, 因為 strict mode 不是一個子集而是行為會不同, 又並非所有的瀏覽器都支援 strict mode, 因此不論支不支援的瀏覽器都要測
+  * 參考:
+    * [Strict mode - JavaScript | MDN](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Strict_mode)
+    * [What does “use strict” do in JavaScript, and what is the reasoning behind it?](http://stackoverflow.com/questions/1335851/what-does-use-strict-do-in-javascript-and-what-is-the-reasoning-behind-it)
+    * [JavaScript: Why the hatred for strict mode?](http://www.2ality.com/2011/10/strict-mode-hatred.html)
 * Create a for loop that iterates up to `100` while outputting **"fizz"** at multiples of `3`, `"buzz"` at multiples of `5` and **"fizzbuzz"** at multiples of `3` and `5`
+  * 答:
+    * 這題可能測這些東西
+      * 使用 array.push 串接 (可能量很大的) 字串
+      * 試著找出規則來減少 loop 數 (這裡是用上公倍數)
+      * 盡量減少操作 DOM 的次數, 不要每一次輸出都直接操作 DOM
+      * 以 var 定義變數, 且是在 loop 之外
+    * 程式:
+    ```javascript
+    var idx = 3, // start from 3
+      str,
+      arr = [],
+      tmp,
+      lcm;
+    for ( ; idx <= 100; idx++) {
+        str = '';
+        if (idx%3 == 0) str+='fizz';
+        if (idx%5 == 0) str+='buzz';
+        if (str) arr.push(str);
+        // found the Least common multiple
+        if (str == 'fizzbuzz') {
+            // copy the lcm and current array
+            lcm = idx;
+            tmp = arr.slice();
+            // step forward lcm
+            // loop until limitation
+            while ((idx + lcm) < 100) {
+                idx += lcm;
+                // append the tmp to arr
+                arr = arr.concat(tmp);
+            }
+        }
+    }
+    output(arr.join(', '));
+    function output (str) {
+        $('.output')[0].innerHTML += str;
+    }
+    ```
+* 為何一般來說最好不要使用 global scope 呢?
+  * 答:
+    * 任何地方的任何 code 都能夠存取 global scope, 如果大家都用 global scope 可能有變數/函式撞名, 先載入的會被蓋掉
+    * 全域變數因為一些原因效能較差:
+      * 假設你沒有明確指定 (使用 `gvar` 而非 `window.gvar`) 那 browser 要從當前 scope 開始, 一層一層延著 scope chain 找到 global scope 為止.
+      * global scope 通常比 local function scope 有更多東西, browser 找某個變數要找比較久
+      * 反正 Global 就是慢 (叭~~~).
+  * 參考: 
+    * [JavaScript best practices | w3](https://www.w3.org/wiki/JavaScript_best_practices)
+    * [Global Variables vs Local Variables | jsPerf](https://jsperf.com/global/4)
+    * [30 Tips To Improve Javascript Performance](https://www.monitis.com/blog/2011/05/15/30-tips-to-improve-javascript-performance/)
+    * [JavaScript variable performance](https://www.nczonline.net/blog/2009/02/10/javascript-variable-performance/)
+* 你何時會用 `load` event? 它有什麼缺點嗎? 有什麼替代方案? 為何你會用那些替代方案?
+  * 答:
+    * 你何時會用 `load` event?
+      * 當我需要等某個東西載入完後才能做事時, 如:
+      * 假設我要算某個 block 的 size, 那就得等它所有內容含圖片載完, CSS 套完, 會改動它的 JS 跑完最後才能算
+      * 假設有一段 JS 要等其它 JS (可能是第三方 lib) 載完才能跑
+    * 它有什麼缺點嗎?
+      * 是的, 它有時會使速度變慢, 造成不好的結構或破破的結果
+      * 例如 `window.onload`, 它會等 *所有* 東西都載完後才執行, 因此會比較慢 (相對於只等你真的需要的東西載完而言).
+      * 對彼此獨立的兩個東西來說, 很難確保它們載入完成的先後次序
+        * 注意: 尤其動態加入的 script tag 是會以非同步的方式載入
+      * 有部份 lib 本身即有分段載入, 也就是它的 onload 只是你加載的那一個 script 載入了, 但是該 script 還會再載入其它東西 (而你需要的其實是那其它東西)
+      * 假如有一長串 script 一個接著一個都要聽別人的 onload, 那也會灰熊慢
+      * 要綁 onload 事件你非得拿到 DOM 不可, 讓你的 code 彈性更小
+    * 有什麼替代方案? 為何你會用那些替代方案?
+      * 自訂 event, 如
+      ```javascript
+      // 這是在被相依的 JS 檔
+
+      // 載入後立馬標記一個 flag
+      window.myNameSpace.loaded['hey-I-am-loaded'] = true;
+      // 並觸發 event
+      $(document).trigger('hey-I-am-loaded');
+
+      // ###
+      ```
+
+      ```javascript
+      // 這是在相依於上面那個檔的 JS 檔
+      var executed; // 這是檔案內用來標記是否執行過的 flag
+      // 當收到 event 時, 執行
+      // (這是這個檔比較早載完的情形)
+      $(document).on('hey-I-am-loaded', run);
+
+      // 這是要被執行的部份
+      function run () {
+        // 假如還沒被執行且相依的檔載入了, 執行
+        if (!executed && window.myNameSpace.loaded['hey-I-am-loaded']) {
+          executed = true;
+          // 做事情
+          // ...
+          // 然後也把自己標記為已載入
+          // 並觸發 event
+          window.myNameSpace.loaded['hey-I-am-also-loaded'] = true;
+          $(document).trigger('hey-I-am-also-loaded');
+        }
+      }
+      // 假如這個檔比較晚載完, 沒聽到 event 的話
+      // 直接 call run 方法, run 方法內檢查要執行就會執行
+      run();
+      ```
+      * 直接由 script 生成相依的內容, 確保不會漏掉 event
+      ```html
+      <!-- 這是用來放圖的區塊 -->
+      <div class="the-img-area"></div>
+      ```
+      ```javascript
+      // 由 script 建立 img 元素
+      var img = new Image();
+      // 然後立馬綁定 event
+      // 所以你可以肯定不會漏掉
+      img.onload = foo;
+      img.src = src;
+      $('.the-img-area').append(img);
+      ```
+      * 有時候你只能跑個 timer 一直檢查
+      ```javascript
+      var cnt = 0,
+        timer = setInterval(function () {
+        // 建個 timer 每秒檢查一次
+        if (cnt > 10) {
+          // 超過十秒就顯示錯誤訊息並停掉 timer
+          outputErrorMessage();
+          clearInterval(timer);
+        } else if (window.theLibThatDoesntProvideEventOrCallback
+          && window.someMoreThingsLoadedByThatLib) {
+          // (上面兩行) 如果那個沒提供 callback 機制的爛 lib
+          // 以及那個爛 lib 自行載入的別的東西都存在的話
+          // 就執行並停掉 timer
+          foo();
+          clearInterval(timer);
+        }
+        cnt++;
+        // check every 1000 ms
+      }, 1000);
+      ```
+      * 也可以試試下面提到的 Promise, 等支援度更完整一些我會視情況使用
+* 解釋什麼是 single page app 及如何使它 SEO-friendly.
+  * Ans:
+    * 解釋什麼是 single page app: single-page application (SPA) 是一個只使用一個頁面來提供如桌面應用般更流暢的使用體驗的 網站/網頁應用, 在 SPA 中一旦頁面載入後, 會根據狀態變化或使用者操作動態的改變頁面內容 (通常透過 AJAX), 不會有頁面 reload/redirect 的情形
+    * 如何使它 SEO-friendly
+      * 使用 url hash 建立可流覽的頁面
+      * 適當的輸出 html 內容如 heading, list (ul/li), 超連結等, 或許以 CSS 讓使用者看不到只有爬蟲看得到
+      * 可以試著偵測機器人爬蟲提供為 SEO 優化的內容
+      * 可以使用 headless browser 在 server 端生成頁面的 snapshot
+  * 參考: 
+    * [Single-page application](https://en.wikipedia.org/wiki/Single-page_application)
+    * [HOW TO OPTIMIZE SINGLE PAGE SITES FOR SEARCH ENGINES](http://www.webdesignerdepot.com/2013/10/how-to-optimize-single-page-sites-for-search-engines/)
+    * [A proposal for making AJAX crawlable](https://googlewebmastercentral.blogspot.tw/2009/10/proposal-for-making-ajax-crawlable.html)
+* 你對使用 Promises 或其 polyfills (應是非 Native 的實做) 有什麼的經驗?
+  * 答:
+    * 我在開發 NodeJS 後端時 (好吧非前端, 也可能是 polyfill) 時有用它來處理一些非同步的工作如連接 MongoDB 然後取資料做處理, 用它把一個個非同步的 task 串起來等等, 它讓 code 比未整理好的巢狀 callback 好讀一些, 並且不像 event 機制會有觸發順序的問題
+    * 一些好文: [JavaScript Promises](http://www.html5rocks.com/en/tutorials/es6/promises/?redirect_from_locale=tw), [JavaScript Promises With Node.js](http://zpalexander.com/blog/javascript-promises-node-js/)
+* 使用 Promises 取代 callback 有何優缺點?
+  * 答:
+    * 優:
+      * 避免 [callback hell](http://stackoverflow.com/questions/25098066/what-is-callback-hell-and-how-and-why-rx-solves-it)
+    * 缺:
+      * 現在有很多版本的 Promise. (有 Native, 及 [這個列表的其它實做](http://complexitymaze.com/2014/03/03/javascript-promises-a-comparison-of-libraries/))
+      * 某些版本的 Promise 會讓你非常難 Debug.
+      * 它同時也增加了 code 的複雜度.
+  * 參考:
+    * [How to debug javascript promises?](http://stackoverflow.com/questions/25827234/how-to-debug-javascript-promises)
+    * [Promises/A+ Considered Harmful](http://robotlolita.me/2013/06/28/promises-considered-harmful.html)
+    * [Promises vs Callbacks – Code comparison](http://lkrnac.net/blog/2014/10/promises-vs-callbacks-comparison/)
+* 使用再包裝語言來寫 JavaScript 有何優缺點?
+  * 答 (以 CoffeeScript 為例):
+    * 優
+      * 會督促你使用好的 JavaScript Pattern
+      * 會協助你避免 Anti-Pattern
+      * 讓程式碼更短可讀性更高
+    * 缺
+      * 編譯可能造成困擾. (敲有感!)
+      * 可能比較難 debug (因為你寫的跟你看到 bug 的 code (編譯後的) 不同)
+      * 它可能是容易改變 (然後你也得改) 的.
+      * 它較小眾 (會 JS 的不一定會 CS).
+    * 缺 (一些個人補充)
+      * 優點也可能造成一些壞處如,
+        * 變數會 auto-scoped -> 一開始就寫 CoffeeScript 的人可能就會缺乏 scope 的知識.
+        * 讓程式碼更短可讀性更高 -> 可能就會讓你不會寫原生 JavaScript.
+      * 縮排影響編譯結果. 不熟之前很不方便.
+      * 換行影響編譯結果. 不熟之前很不方便, 且有時候因此不得不寫怪怪的 code.
+      * 以上這兩點尤其在寫 inline 物件實字時超討厭的科科.
+  * 參考:
+    [What are the pros and cons of Coffeescript?](http://programmers.stackexchange.com/questions/72569/what-are-the-pros-and-cons-of-coffeescript)
+* 你用什麼工具或技術來為你的 JavaScript 除錯?
+  * Ans:
+    * 我通常用 Chrome Developer tools
+    * 我會設中斷點, 用 `console.log console.trace console.table console.error` 等方法 log 資訊, 用 `debugger` 關鍵字 (也是中斷點)
+    * 有篇很棒的除錯技巧文章 [Useful Javascript debugging tips you might not know](https://raygun.io/blog/2015/06/useful-javascript-debugging-tips-you-didnt-know/)
+* 你如何 iterating 物件的所有屬性或陣列的所有元素?
+  * 答
+    * iterating 物件的所有屬性
+    ```javascript
+    var obj = {'k1' : 'v1', 'k2' : 'v2'}, // 測試用物件
+      key; // 用來搭 in 關鍵字用的變數
+    for (key in obj) {
+      console.log(key); // 屬性名稱
+      console.log(obj[key]); // 屬性值
+    }
+    ```
+    * iterating 陣列的所有元素
+    ```javascript
+    var arr = ['item 1', 'item 2', 'item 3'], // 測試用 array
+      idx = 0, // 開始 index 為 0
+      len = arr.length; // 總 length 先存起來
+    for ( ; idx < len; idx++) {
+      // for 廻圈, 輸出每個元素
+      console.log(arr[idx]);
+    }
+    ```
+    * 我知道有 foreach, 但支援度不是很好某些環境沒有
+* 說明 mutable 和 immutable objects 的不同.
+  * 舉個 immutable object 的例子?
+  * immutability (不可變性) 有什麼優缺點?
+  * 你如何在程式中實現 immutability?
+    * 答
+      * 說明 mutable 和 immutable objects 的不同
+        * mutable: 就是你可以改
+        * immutable: 就是你不能改
+      * 舉個 immutable object 的例子?
+      ```javascript
+      // string 是 immutable 的
+      // 你不能改動它的某個字元如 str[1]='b'
+      var s = `foo`;
+      ```
+      或者使用 API
+      ```javascript
+      var obj = {'a': 'aaa', 'b': function () {};}
+      // 以下這行讓 obj 的內容通通不能改, 改了不會變
+      Object.freeze(obj);
+      ```
+      * immutability (不可變性) 有什麼優缺點?
+        * 優: 
+          * 可以確保某個東西不會被改
+          * 因此可以確保傳給某個 function 的物件拿回來能繼續用
+          * 也可以避免意外的 side effect
+        * 缺:
+          * 若需要更動時就得 clone 該物件, 因此可能會佔比較多記憶體也比較慢
+    * 參考:
+      * [Are JavaScript strings immutable? Do I need a “string builder” in JavaScript?](http://stackoverflow.com/questions/51185/are-javascript-strings-immutable-do-i-need-a-string-builder-in-javascript)
+      * [Object.freeze()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
+      * [Any performance benefit to “locking down” JavaScript objects?](http://stackoverflow.com/questions/8435080/any-performance-benefit-to-locking-down-javascript-objects)
+* 說明同步 (synchronous) 和異步 (asynchronous) functions 的差異.
+  * 答:
+    * 同步 function: 在它跑完前不能做別的事.
+    ```javascript
+    // call 一個同步 function 
+    syncFoo ();
+    // nextTask 得等 syncFoo 整個跑完
+    // 換句話說在 nextTask 裡你可以有把握
+    // syncFoo 已經整個跑完了
+    nextTask();
+    ```
+    * 異步 function: 在它跑完前可以做別的事.
+    ```javascript
+    // call 一個異步 function
+    // 並且傳入 nextTask 當 callback
+    // asyncFoo 會在它結束後呼叫 nextTask
+    asyncFoo(nextTask);
+    // 而跑下面這個 otherTask 時
+    // 你無法確認 asyncFoo 執行到哪了
+    otherTask();
+    ```
+    * 更多資訊請參考以下
+  * 參考:
+    * [Asynchronous vs synchronous execution, what does it really mean?](http://stackoverflow.com/questions/748175/asynchronous-vs-synchronous-execution-what-does-it-really-mean)
+    * [What is the difference between synchronous and asynchronous programming (in node.js)](http://stackoverflow.com/questions/16336367/what-is-the-difference-between-synchronous-and-asynchronous-programming-in-node)
+* 什麼是 event loop?
+  * call stack 和 task queue 有何差異?
+    * 答:
+      * 什麼是 event loop?
+        * JavaScript 的同步 model 就是基於 "event loop". 這和其它語言如 C/JAVA 的 model 有很大的不同 
+        * event loop 的名稱是由它通常的實做方式來的, 大約像以下
+        ```javascript
+        // 這裡應是指瀏覽器如何實做
+        // queue 裡放的是一堆待處理 event
+        // 透過一個 loop 一個一個處理
+        while(queue.waitForMessage()){
+          queue.processNextMessage();
+        }
+        ```
+        * JavaScript 在處理 IO (後端 DB 存取或 XMLHttpRequest) 時不像其它語言會 block 住, 因此能同時處理其它事如 user input.
+      * call stack 和 task queue 有何差異?
+        * call stack: Function calls 會形成一個框框的 stack 如.
+        ```javascript
+        // 這裡 stack 是空的
+        foo();
+        // 現在 stack 裡有 foo
+        function foo () {
+          // call bar 時 stack 中 foo 上面又被堆上了一個 bar
+          bar();
+          // bar 結束, stack 裡面又只剩 foo
+        } // foo 結束, stack 空了
+        function bar () {
+
+        }
+        ```
+        * task queue: JavaScript runtime 包含一個用來存放待處理 massage 的 massage queue, 每個 massage 關聯到一個 function, 當 stack 是空的時候就會從 massage queue 中取一個 massage 來處理, 也就是 call 它關聯到的 function (因此也產生一個初始的 stack frame), 而 stack 再度清空時就是處理完畢了
+        ```javascript
+        // 一開始 queue 是空的
+        setTimeout(foo, 0);
+        // 到此你塞了 foo 進 queue
+        setTimeout(bar, 0);
+        // 接著你又在 foo 之後多塞了一個 bar
+        function foo () {}
+        function bar () {}
+        ```
+  * 參考:
+    * [Concurrency model and Event Loop - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
+    * [The JavaScript Event Loop: Explained - Blog by Carbon Five](http://blog.carbonfive.com/2013/10/27/the-javascript-event-loop-explained/)
+    

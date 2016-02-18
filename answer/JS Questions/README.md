@@ -288,7 +288,7 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
   ```javascript
   
   function duplicate (a) {
-    return a.slice().concat(a);
+    return a.concat(a);
   }
   duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
   ```
@@ -438,7 +438,7 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
           clearInterval(timer);
         }
         cnt++;
-        // check every 100 ms
+        // check every 1000 ms
       }, 1000);
       ```
 * Explain what a single page app is and how to make one SEO-friendly.
@@ -603,12 +603,11 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
         setTimeout(foo, 0);
         // now queue contains foo
         setTimeout(bar, 0);
-        // now queue contains foo bollowed by bar
+        // now queue contains foo followed by bar
         function foo () {}
         function bar () {}
         ```
   * Ref:
     * [Concurrency model and Event Loop - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
     * [The JavaScript Event Loop: Explained - Blog by Carbon Five](http://blog.carbonfive.com/2013/10/27/the-javascript-event-loop-explained/)
-
 
