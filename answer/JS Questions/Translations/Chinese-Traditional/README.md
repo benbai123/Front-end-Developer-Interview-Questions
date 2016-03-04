@@ -631,7 +631,7 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 
         }
         ```
-        * task queue: JavaScript runtime 包含一個用來存放待處理 massage 的 massage queue, 每個 massage 關聯到一個 function, 當 stack 是空的時候就會從 massage queue 中取一個 massage 來處理, 也就是 call 它關聯到的 function (因此也產生一個初始的 stack frame), 而 stack 再度清空時就是處理完畢了
+        * task queue: JavaScript runtime 包含一個用來存放待處理 message 的 message queue, 每個 message 關聯到一個 function, 當 stack 是空的時候就會從 message queue 中取一個 message 來處理, 也就是 call 它關聯到的 function (因此也產生一個初始的 stack frame), 而 stack 再度清空時就是處理完畢了
         ```javascript
         // 一開始 queue 是空的
         setTimeout(foo, 0);
