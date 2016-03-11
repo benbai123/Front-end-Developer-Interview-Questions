@@ -2,7 +2,7 @@
 #### Network Questions:
 
 * Traditionally, why has it been better to serve site assets from multiple domains?
-  * Ans: To improve concurrent downloading number, since browsers restrict the number of simultaneous downloads that can take place.
+  * Ans: To improve concurrent downloading number, since browsers restrict the number of simultaneous downloads of a domain that can take place.
   * Ref: [Performance Research, Part 4: Maximizing Parallel Downloads in the Carpool Lane](http://yuiblog.com/blog/2007/04/11/performance-research-part-4/)
 * Do your best to describe the process from the time you type in a website's URL to it finishing loading on your screen.
   * Ans: 
