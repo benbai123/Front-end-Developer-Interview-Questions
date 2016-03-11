@@ -16,7 +16,9 @@ add(2)(5); // 7
 ```
 
   * 答:
+
   ```javascript
+
   function add (a, b) {
     if (typeof a == "undefined") return null;
     if (typeof b == "undefined") {
@@ -86,7 +88,9 @@ console.log('three');
 ```
 
   * 答: 
+
   ```javascript
+  
   one
   three
   two

@@ -15,7 +15,9 @@ add(2)(5); // 7
 ```
 
   * Ans:
+
   ```javascript
+
   function add (a, b) {
     if (typeof a == "undefined") return null;
     if (typeof b == "undefined") {
@@ -81,7 +83,9 @@ console.log('three');
 ```
 
   * Ans: 
+
   ```javascript
+  
   one
   three
   two
