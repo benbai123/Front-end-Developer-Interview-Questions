@@ -27,29 +27,29 @@
 
 * 你昨天或這週學習了什麼？
 * 寫程式的哪部份最讓你感到很興奮或是有興趣？
-* What is a recent technical challenge you experienced and how did you solve it?
+* 說明一項最近在技術上遇到的挑戰還有你是怎麼解決它的？
 * 當你開發Web應用程式或網站時，針對UI、安全性、效能、SEO、維護性，以及技術，你考量的點是什麼？
-* 說說你喜好的開發環境 (作業系統, 編輯器或 IDE, 瀏覽器, 開發工具 … 之類)
+* 說說你喜好的開發環境 (作業系統, 編輯器或IDE, 瀏覽器, 開發工具 … 之類)
 * 你最熟悉哪一套版本控制系統？
 * 你可以描述你在開發一個網站時的工作流程嗎？
 * 如果有 5 種不同的樣式表 (stylesheets)，該如何整併到網站？
 * 你可以描述漸進增強 (progressive enhancement) 和優美退化 (graceful degradation) 間的差異嗎？
 * 你怎麼優化一個網站的靜態檔案 (assets) 和資源 (resources)？
 * 說出三種能加快網頁讀取速度的方法 (感覺上的速度或是真正的讀取時間)。
-* 如果你加入了一個專案，但是他們的程式碼用 tabs，但是你習慣用spaces (空白鍵)，你會怎麼做？
-* 寫一個簡易的投影片頁面
+* 如果你加入了一個專案，但是他們的程式碼用 tabs 做縮排，但是你習慣用 spaces (空白鍵)，你會怎麼做？
+* 寫一個簡易的投影片頁面。
 * 你用什麼工具來測試你的程式碼效能？
 * 如果今年你能精通一項技術，那會是什麼？
 * 描述標準和製定標準機構的重要性？
-* 什麼是 FOUC？ 你怎麼避免 FOUC?
-* Explain what ARIA and screenreaders are, and how to make a website accessible.
-* Explain some of the pros and cons for CSS animations versus JavaScript animations.
+* 什麼是FOUC？如何避免？
+* 說明什麼是ARIA跟螢幕閱讀器及如何讓你的網站通過無障礙。
+* 說明用 CSS 來做動畫與用 JavaScript 來做動畫的優缺點。
 
 #### <a name='html-questions'>HTML 問題:</a>
 
 * `doctype` 做什麼用的？
 * standards mode 和 quirks mode 有什麼不同？
-* 使用 XHTML 有什麼限制？?
+* 使用 XHTML 有什麼限制？
 * 如果網頁使用 `application/xhtml+xml` 會有問題嗎？
 * 你怎麼做一個需要支持多國語言的網頁？
 * 當開發和設計一個多國語言網站時，有什麼需要小心的？
@@ -76,8 +76,8 @@
 * 你曾經實作 media queries 或是 mobile specific (手機規格的) layouts/CSS?
 * 你熟悉任何有關 SVG 嗎？
 * 你如何優化你的網頁以利於列印？
-* 在寫高效的 CSS 時，有什麼要注意的？
-* 使用 CSS preprocessors 的優點和缺點是什麼？ (Sass, Compass, Stylus, LESS)
+* 在撰寫高效能的 CSS 時，有什麼需要注意的？
+* 使用 CSS preprocessors (CSS 預處理器)的優點和缺點是什麼？ (Sass, Compass, Stylus, LESS)
   * 描述你使用過的喜歡和不喜歡的 CSS preprocessors
 * 你如何使用非標準字體來實作網頁設計？
 * 解釋瀏覽器如何按照 CSS selector 找到對應的 element。
@@ -92,7 +92,7 @@
 * 請問你有使用過 CSS Flexbox 或 Grid specs？
 * 如何區分 responsive design 與 adaptive design 有何不同？
 * 你曾經使用過 retina graphics？如果有，是在什麼時機以及用了什麼技術？
-* Is there any reason you'd want to use `translate()` instead of *absolute positioning*, or vice-versa? And why?
+* 有什麼原因會讓你會想使用 translate() 而不是絕對定位 (absolute positioning)？或是反過來？為什麼呢？
 
 #### <a name='js-questions'>JS 規格問題集：</a>
 
@@ -105,7 +105,7 @@
   * 需要修改那裡使它成為IIFE?
 * `null`、`undefined`和 `undeclared`變數之間有什麼差異？
   * 你如何檢查？
-* 什麼是 closure, 如何/為什麼使用?
+* 什麼是 closure, 如何及為什麼使用?
 * anonymous functions 典型的使用時機？
 * 你如何架構你的程式碼？ (module pattern, classical inheritance?)
 * host objects 和 native objects 有何不同？
@@ -114,11 +114,11 @@
 * 描述 `Function.prototype.bind`?
 * 你什麼時候優化你的程式？
 * 你什麼情況會使用 `document.write()`？
-  * 多數的廣告產生仍然使用 `document.write()` 雖然這樣用會令人皺眉
+  * 多數的廣告產生仍然使用 `document.write()` 雖然這樣用會令人皺眉。
 * feature detection, feature inference, 和使用 UA string 有什麼不同？
 * 盡可能的詳述描述 AJAX。
 * 描述 JSONP 如何運作 (且為何它不是真正的 AJAX)。
-* 你是用過 JavaScript templating (樣板) ？
+* 你曾用過 JavaScript templating (樣板) ？
   * 如果有的話，你有用過哪些 libraries？ (Mustache.js, Handlebars … 等)
 * 描述 "hoisting"
 * 描述 event bubbling.
@@ -134,7 +134,7 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 ```
 
 * Ternary expression 怎麼來的, "Ternary" 的意思是什麼？
-* 什麼是 `"use strict";`? 使用他的優點和缺點是什麼？
+* 什麼是 `"use strict";`? 使用它的優點和缺點是什麼？
 * Create a for loop that iterates up to `100` while outputting **"fizz"** at multiples of `3`, `"buzz"` at multiples of `5` and **"fizzbuzz"** at multiples of `3` and `5`
 
 #### <a name='network-questions'>網路問題集:</a>
@@ -160,7 +160,7 @@ add(2, 5); // 7
 add(2)(5); // 7
 ```
 
-問題: 下面的 statement(陳述式) 會回傳什麼？
+問題: 下面的 statement (陳述式) 會回傳什麼？
 
 ```javascript
 "i'm a lasagna hog".split("").reverse().join("");
@@ -195,7 +195,7 @@ foo.push(2);
 
 * 你最近寫過最酷的專案是？
 * 你使用的開發工具中，你最喜歡的部分是什麼？
-* 你有任何的 pet projects (個人開發的小專案)？ 什麼樣的？
+* 你有任何的 pet projects (個人開發的小專案)？什麼樣的？
 * 你最喜歡 IE 瀏覽器的什麼特點？
 * How do you like your coffee?
 
