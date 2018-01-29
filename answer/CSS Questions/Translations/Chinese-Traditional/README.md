@@ -11,7 +11,7 @@
 * 描述 Floats 並解釋如何運作。
   * 答 (簡短版): Float 將一個元素從頁面 flow 中移出, 然後依指定的值將它推往 左/右 側, 所有沒有被指定為 float 的 siblings 會圍繞著 float element, 通常搭配 clear 屬性使用來避免破版
   * 答:
-    * Float 屬性依指定的 left/right 值將 Dom 元素 "推" 往左側或右側, 然後其它元素會使用餘下的空間並圍繞著 Float 的元素, 注意苔一個區塊中所有的元素都是 Float 的話它將會沒有高度, 通常可以
+    * Float 屬性依指定的 left/right 值將 Dom 元素 "推" 往左側或右側, 然後其它元素會使用餘下的空間並圍繞著 Float 的元素, 注意若一個區塊中所有的元素都是 Float 的話它將會沒有高度, 通常可以
       * 加入一個使用 clear 屬性的元素來解決 (如 `<div style="clear: both;"></div>`).
       * 若一個區塊本身有 `overflow: auto;` 或 `overflow: hidden`, 則會自動擴展到正確的 size 而不需要額外的 clear 元素.
       * 也可以對該區塊使用 pseudo selector 插入含 clear 修正的元素如下:
@@ -70,7 +70,7 @@
     * 我最喜歡的做法是以絕對定位將圖片蓋在文字上.
     * 通常用在 SEO 優化, 例如為了 SEO 需要以文字寫入公司名但你想秀的是 Logo 圖片
   * Ref: [Nine Techniques for CSS Image Replacement](https://css-tricks.com/css-image-replacement/)
-* 你如何修正只發生在特定瀏覽器的 style 問題? CSS 屬性 hacks, 也條件引用 .css 檔案, 或是… 其他的？
+* 你如何修正只發生在特定瀏覽器的 style 問題? CSS 屬性 hacks, 有條件引用 .css 檔案, 或是… 其他的？
   * 答:
     * 首先我會嚐試找到一個跨瀏覽器的做法.
     * 如果找不到上述方法但有可靠的 CSS hacks 就使用 CSS hacks
@@ -174,7 +174,7 @@
     }
     ```
     * 減少瀏覽器重排 (Reflow): 
-      * 減少非必要過深層的 Dom 結構 (以減低重繪一個區塊的 Loading).
+      * 減少非必要、太過深層的 Dom 結構 (以減低重繪一個區塊的 Loading).
       * 減少 CSS 規則並移除未用到的規則 (以減低不必要的 selector matching).
       * 複雜的呈現改變如動畫等到 flow 之外做. (使用 `position: absolute;` 或 `position: fixed;`).
       * 避免太複雜的 CSS selectors - 如過長的 chaining selectors - 以降低 CPU 做 selector matching 的負擔.
@@ -252,7 +252,7 @@
   * Ref: [CSS Box Model](http://www.w3schools.com/css/css_boxmodel.asp), [CSS3 box-sizing Property](http://www.w3schools.com/cssref/css3_pr_box-sizing.asp), [Box Sizing](https://css-tricks.com/box-sizing/)
 * 請解釋 `* { box-sizing: border-box; }`？並且說明使用它的好處？
   * 答:
-    * 它告訴瀏覽器 width 及 height 屬情 (還有 min/max 屬性) 包含內容, padding 及 border, 但不含 margin.
+    * 它告訴瀏覽器 width 及 height 屬性 (還有 min/max 屬性) 包含內容, padding 及 border, 但不含 margin.
     * 它讓你指定 border/padding 時不用擔心會影響版面, RWD (Responsive Web Design) 時很有用.
     * 但注意 CSS 3 only
 * 請列出您記憶中 display 屬性的全部值
@@ -297,7 +297,7 @@
   * Ref: [Specifics on CSS Specificity](https://css-tricks.com/specifics-on-css-specificity/)
 * 你目前有使用哪一套 CSS Framework 在開發環境或產品線上？
   * 答: 我目前使用 bootstrap
-  * 如果有，請問是哪一套，並且描述如果改善或提昇 CSS Framework？
+  * 如果有，請問是哪一套，並且描述如何改善或提昇 CSS Framework？
     * 答:
       * 我目前使用 bootstrap (再問一遍?? 囧)
       * 有好些點我會改改
@@ -306,7 +306,7 @@
       * 我剛讀了 [5 reasons NOT to use Twitter Bootstrap](http://www.zingdesign.com/5-reasons-not-to-use-twitter-bootstrap/) 因此可能會試一下其它 Framework (如, [Foundation](http://foundation.zurb.com/) )
 * 請問你有使用過 CSS Flexbox 或 Grid specs？
   * 答: 有, 我我大概在 2012 年試著以 Flexbox 做了一個 [ZK](https://www.zkoss.org/) Framework 的[元件](https://github.com/benbai123/flexlayout), 但後來 Flexbox 的規格有改, 可能已無法使用了.
-* 如何區分 responsive design 與 adaptive design 有何不同？
+* responsive design 與 adaptive design 有何不同？
   * 答: responsive design 是使用一組有彈性的 styles (或許含一些 media query) 而能適用於多種 screen size, adaptive design 則是根據多種 screen size 去製作多組 styles 再依 screen size 選擇套用哪一組 style
   * Ref: [Adaptive web design (wiki)](https://en.wikipedia.org/wiki/Adaptive_web_design), [What is the difference between responsive vs. adaptive web design?](http://www.techrepublic.com/blog/web-designer/what-is-the-difference-between-responsive-vs-adaptive-web-design/), [Responsive vs. Adaptive Design: What’s the Best Choice for Designers?](https://studio.uxpin.com/blog/responsive-vs-adaptive-design-whats-best-choice-designers/)
 * 你曾經使用過 retina graphics？如果有，是在什麼時機以及用了什麼技術？
