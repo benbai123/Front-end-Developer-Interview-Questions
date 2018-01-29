@@ -125,7 +125,7 @@
     * 有些 JS 套件就是規訂要放前面 (如 Modernizr.js).
     * 對於有指定 `async` 或 `defer` 的 script, 放在前面不會 block parser 並且可提早下載它們.
     * 假若頁面主要內容要靠 script 產生, 如 Google Map (且它可支援 async load)
-    * 假如 style 會被這個 script 並造成大量重繪 (如上述 Modernizr) 那可能放前面會比較好
+    * 假如某些 style 會被這個 script 修改並造成大量重繪 (如上述 Modernizr) 那可能放前面會比較好
     * 假如需要靠 script 來 render 內容, 如你的內容是一串數列而需要靠 script 生成圖片, 那可能可以把 script 放 header 之後但在 footer 之前, 而不必放到最後面.
     * 簡言之, 當你無法決定放哪, 或當 script 可 async/defer, 以及當 script 對 render 內容很重要時就可以往前放
   * Ref:
