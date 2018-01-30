@@ -108,7 +108,7 @@
 * 什麼是 closure, 如何/為什麼使用?
   * 答:
     * Closures 是參考一組獨立變數的 functions. 也就是在 closure 中定義的 function 會記住它被創建當下的環境.
-    * 如何/為什麼使用: 可以用來將某些資料私有化 (無法由外部修改), 保時 global scope 乾淨, 避免因錯誤操作造成的問題等 (因為私有不可能被操作), 例如想像你寫了一個 JS Game, 你會想將整個 Game 的環境私有化以確保不會被修改
+    * 如何/為什麼使用: 可以用來將某些資料私有化 (無法由外部修改), 保時 global scope 乾淨, 避免因錯誤操作造成的問題等 (因為私有不可能被操作), 例如想像你寫了一個 JS Game, 你會想將整個 Game 的環境私有化以確保不會被任意修改
   * 範例: [Demo](http://benbai123.github.io/examples/Front-end-Developer-Interview-Questions/JS%20Questions/closure.html), [HTML](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/JS%20Questions/closure.html), [JS](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/JS%20Questions/js/closure.js)
   * 參考: [Closures - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 * anonymous functions 典型的使用時機？
@@ -163,7 +163,7 @@
   * 範例: [Demo](http://benbai123.github.io/examples/Front-end-Developer-Interview-Questions/JS%20Questions/function_bind.html), [HTML](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/JS%20Questions/function_bind.html), [JS](https://github.com/benbai123/benbai123.github.io/blob/master/examples/Front-end-Developer-Interview-Questions/JS%20Questions/js/function_bind.js)
   * 參考: [Function.prototype.bind() - JavaScript | MDN](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind)
 * 你什麼時候優化你的程式？
-  答 (英文版沒有): 想到的時候, 我並不會先快速寫一個較差的版本再優化, 所有寫下的東西就是當下我能想到最好的寫法, 而在寫下之後對於較複雜或常用的部份我會時常放在腦中想, 有時會想到更好的做法
+  答 (英文版沒有): 在開始寫之前, 我會先特意安排一段時間仔細思考, 想過所有能想到的可能做法, 然後選定一個 (當下覺得最好的) 方式實做, 而在寫下之後對於較複雜或常用的部份我會時常放在腦中想, 有時會想到更好的做法再做優化
 * 你什麼情況會使用 `document.write()`？ (多數的廣告產生仍然使用 `document.write()` 雖然這樣用會令人皺眉)
   * Ans: 過去不曾使用, 以下為找到的
     * 用來補缺的東西 (就是比 create script 元素設 src 寫起來方便一點這樣),
@@ -223,7 +223,7 @@
       * AJAX 有 cross-domain 問題, 除非使用 Cross-origin resource sharing (跨域資源共享), JSONP 是繞過 AJAX 受到 same domain policy 限制的技巧 (假設 Server 不開放跨域資源共享下的替代方案).
       * Ajax calls 可以是異步或同步的, JSONP 只能是異步的 (插入 script 後就只能等它載入後執行, 無法阻擋其它 JS 被執行).
   * 參考: [What is JSONP all about?](http://stackoverflow.com/questions/2067472/what-is-jsonp-all-about), [I don't get how JSONP is ANY different from AJAX](http://stackoverflow.com/questions/10289789/i-dont-get-how-jsonp-is-any-different-from-ajax)
-* 你是用過 JavaScript templating (樣板) ？
+* 你是否有使用過 JavaScript templating (樣板) ？
   * 如果有的話，你有用過哪些 libraries？ (Mustache.js, Handlebars … 等)
     * 答: 有, Angularjs
 * 描述 "hoisting"
